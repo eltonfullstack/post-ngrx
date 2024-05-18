@@ -1,0 +1,33 @@
+<div class="container mt-5">
+  <h1>Posts</h1>
+  <hr />
+  <a class="btn btn-success btn-sm mb-5" routerLink="/create">create new post</a>
+  <!-- <div *ngIf="!postInfo.postlist.length">
+    <h3>Nothing to show to you!</h3>
+  </div> -->
+  <div *ngIf="!postInfo.Errormessage">
+    <table class="table table-striped">
+      <thead>
+        <th>code</th>
+        <th>title</th>
+        <th>body</th>
+        <th width="220px">Action</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let post of postInfo.postlist">
+          <td>{{ post.id }}</td>
+          <td>{{ post.title }}</td>
+          <td>{{ post.body }}</td>
+          <td>
+            <a [routerLink]="['/detail', post.id]" class="btn btn-info btn-sm">detail</a>
+            <a [routerLink]="['/list/', post.id, 'edit']" class="btn btn-warning btn-sm ml-3">edit</a>
+            <button (click)="deletePost(post.id)" class="btn btn-danger btn-sm ml-3">delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div *ngIf="postInfo.Errormessage">
+    <p>{{ postInfo.Errormessage }}</p>
+  </div>
+</div>
